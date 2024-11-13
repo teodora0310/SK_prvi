@@ -8,19 +8,13 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/App" />
             <option value="$PROJECT_DIR$/CSV" />
             <option value="$PROJECT_DIR$/Excel" />
+            <option value="$PROJECT_DIR$/Kalk" />
             <option value="$PROJECT_DIR$/Pdf" />
-            <option value="$PROJECT_DIR$/Txt" />
-          </set>
-        </option>
-      </GradleProjectSettings>
-      <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/Spec" />
-        <option name="gradleHome" value="" />
-        <option name="modules">
-          <set>
             <option value="$PROJECT_DIR$/Spec" />
+            <option value="$PROJECT_DIR$/Txt" />
           </set>
         </option>
       </GradleProjectSettings>

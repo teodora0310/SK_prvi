@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "2.0.20"
+    kotlin("jvm")
 }
 
 group = "org.example"
@@ -11,12 +11,12 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
-    implementation(project(":Kalk"))
 }
 
 tasks.test {
     useJUnitPlatform()
 }
+
 kotlin {
     jvmToolchain(21)
 }
