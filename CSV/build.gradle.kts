@@ -11,10 +11,21 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
+    implementation("org.apache.commons:commons-csv:1.12.0")
+    implementation(project(":Spec"))
+    implementation(project(":Kalk"))
+
 }
 
 tasks.test {
     useJUnitPlatform()
+}
+tasks.withType<Jar> {
+    from("src/main/resources")
+}
+tasks.withType<Jar> {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from("src/main/resources")
 }
 kotlin {
     jvmToolchain(21)
