@@ -11,6 +11,10 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
+    implementation(project(":Spec"))
+    implementation(project(":Kalk"))
+
+    implementation("com.openhtmltopdf:openhtmltopdf-pdfbox:1.0.0")  // Za konverziju HTML-a u PDF
 }
 
 tasks.test {

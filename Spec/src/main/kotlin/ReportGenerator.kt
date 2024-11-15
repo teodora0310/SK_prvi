@@ -1,5 +1,6 @@
 package org.example
 
+// Opcije za formatiranje teksta
 
 
 data class ReportOptions(
@@ -7,7 +8,13 @@ data class ReportOptions(
     val includeSummary: Boolean = false,
     val summaryCalculations: Map<String, Type> = emptyMap(), // Koristi Type iz Kalk modula
     val calculations: Map<Int, Type> = emptyMap(), // Koristi Type iz Kalk modula
-    val formattingOptions: FormattingOptions? = null
+    val formattingOptions: FormattingOptions? = null,
+
+    val title: String? = null,
+    val titleFormat: FormattingOptions? = null,
+    val headerFormat: FormattingOptions? = null,
+    val rowFormat: FormattingOptions? = null,
+    val summaryFormat: FormattingOptions? = null
 )
 
 data class FormattingOptions(

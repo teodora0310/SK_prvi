@@ -13,6 +13,9 @@ dependencies {
     testImplementation(kotlin("test"))
     implementation(project(":Spec"))
     runtimeOnly(project(":CSV"))
+    runtimeOnly(project(":Txt"))
+    runtimeOnly(project(":Pdf"))
+    runtimeOnly(project(":Excel"))
     implementation(project(":Kalk"))
 
 }

@@ -36,11 +36,25 @@ fun main() {
     println("Želite li da uključite zaglavlje (da/ne)?")
     val includeHeader = readLine()?.equals("da", ignoreCase = true) == true
 
-    // Kreirajte opcije za generisanje izveštaja
+
+    // Opcije za formatiranje
+    println("Da li želite da naslov bude podebljan (da/ne)?")
+    val titleBold = readLine()?.equals("da", ignoreCase = true) == true
+    println("Da li želite da zaglavlje bude podebljano (da/ne)?")
+    val headerBold = readLine()?.equals("da", ignoreCase = true) == true
+    println("Želite li da naslov i rezime budu u italic stilu (da/ne)?")
+    val isItalic = readLine()?.equals("da", ignoreCase = true) == true
+
+    // Kreiranje opcija
     val options = ReportOptions(
         includeHeader = includeHeader,
-        calculations = mapOf(2 to Type.SUM) // Primer: suma za treću kolonu
+        calculations = mapOf(2 to Type.SUM),
+        title = "Moj Izveštaj",
+        titleFormat = FormattingOptions(bold = titleBold, italic = isItalic),
+        headerFormat = FormattingOptions(bold = headerBold),
+        summaryFormat = FormattingOptions(italic = isItalic)
     )
+
 
     // Pokrenite generisanje izveštaja
     reportGenerator.generateReport(data, options)

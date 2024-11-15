@@ -11,6 +11,8 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
+    implementation(project(":Spec"))
+    implementation(project(":Kalk"))
 }
 
 tasks.test {
