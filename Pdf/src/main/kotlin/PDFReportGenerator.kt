@@ -11,24 +11,25 @@ class PDFReportGenerator : ReportGenerator() {
     override val type: String = "PDF"
     override val fileName: String = generateFileName()
     private val calculator = Calculate()
+    //termin 4 i dop
+    //5-5 fat h
 
 
     override fun generateReport(data: List<List<String>>, options: ReportOptions) {
-        // Generisanje HTML-a za izveštaj
+
         val htmlReport = generateHtmlReport(data, options)
 
-        // Konvertovanje HTML-a u PDF
+
         val pdfBytes = convertHtmlToPdf(htmlReport)
 
-        // Čuvanje PDF-a u fajl
+
         savePdfToFile(pdfBytes, "izvestaj.pdf")
     }
 
     private fun generateHtmlReport(data: List<List<String>>, options: ReportOptions): String {
-        // Kreiranje osnovne HTML strukture
         val sb = StringBuilder()
 
-        // Početak HTML-a
+        // HTML start and styles
         sb.append("<html><head><style>")
         sb.append("table { width: 100%; border-collapse: collapse; }")
         sb.append("table, th, td { border: 1px solid black; }")
@@ -42,24 +43,31 @@ class PDFReportGenerator : ReportGenerator() {
         }
         sb.append("</style></head><body>")
 
-        // Dodavanje naslova
-        sb.append("<h1>${options.title}</h1>")
+        // Add title if it exists
+        if (!options.title.isNullOrEmpty()) {
+            sb.append("<h1>${options.title}</h1>")
+        }
 
-        // Dodavanje tabele sa podacima
+        // Start table
         sb.append("<table>")
-        sb.append("<tr>")
-        data.first().forEach { sb.append("<th>$it</th>") }  // Dodavanje zaglavlja
-        sb.append("</tr>")
 
-        data.forEach { row ->
+        // Add header if included in options
+        if (options.includeHeader && data.isNotEmpty()) {
+            sb.append("<tr>")
+            data.first().forEach { sb.append("<th>$it</th>") }
+            sb.append("</tr>")
+        }
+
+        // Add data rows, skipping header if already added
+        val rows = if (options.includeHeader) data.drop(1) else data
+        rows.forEach { row ->
             sb.append("<tr>")
             row.forEach { sb.append("<td>$it</td>") }
             sb.append("</tr>")
         }
 
+        // Close table and body
         sb.append("</table>")
-
-        // Kraj HTML-a
         sb.append("</body></html>")
 
         return sb.toString()
